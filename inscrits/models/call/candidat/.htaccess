@@ -1,0 +1,20 @@
+# Bloquer l'accès aux dossiers
+Options -Indexes
+
+
+ErrorDocument 404 https://mwindaholding.com/error
+
+Options +FollowSymlinks
+RewriteEngine on
+
+
+RewriteRule ^signup$ mh_create-compte.php [L]
+RewriteRule ^login$ mh_login-compte.php [L]
+RewriteRule ^logout$ mh_logout.php [L]
+RewriteRule ^reset$ mh_reset-compte.php [L]
+RewriteRule ^send-code$ mh_code-compte.php [L]
+RewriteRule ^profil$ add-profil.php [L]
+RewriteRule ^avatar$ add-avatar.php [L]
+RewriteRule ^update$ update-profil.php [L]
+RewriteRule ^datenaiss$ update-datenaiss.php [L]
+RewriteRule ^secteur$ update-secteur.php [L]

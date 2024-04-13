@@ -1,0 +1,24 @@
+# Bloquer l'accès aux dossiers
+Options -Indexes
+
+
+ErrorDocument 404 https://mwindaholding.com/candidat/
+
+Options +FollowSymlinks
+RewriteEngine on
+
+
+RewriteRule ^dashboard$ index.php [L]
+RewriteRule ^infosone$ infosone.php [L]
+RewriteRule ^portfolio$ portfolio.php [L]
+RewriteRule ^skills$ skills.php [L]
+RewriteRule ^languages$ languages.php [L]
+RewriteRule ^training$ training.php [L]
+RewriteRule ^experiences$ experiences.php [L]
+RewriteRule ^avatars$ avatars.php [L]
+
+#RewriteRule ^city-([0-9]+)$ city.php?id=$1 [L]
+#RewriteRule ^message-([0-9]+)$ message-content.php?id=$1 [L]
+#RewriteRule ^missiondetail-([0-9]+)$ missiondetail.php?id=$1 [L]
+
+#RewriteRule ^profile?([a-z-]+)$ freelancer-detail.php?id=$1 [L]

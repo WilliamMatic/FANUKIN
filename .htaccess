@@ -1,0 +1,23 @@
+# Bloquer l'accès aux dossiers
+Options -Indexes
+
+
+ErrorDocument 404 http://localhost/FANUKIN/
+
+Options +FollowSymlinks
+RewriteEngine on
+
+
+RewriteRule ^home$ index.php [L]
+RewriteRule ^about$ about.php [L]
+RewriteRule ^registered$ registered.php [L]
+RewriteRule ^news$ news.php [L]
+RewriteRule ^projets$ projets.php [L]
+RewriteRule ^danation$ don.php [L]
+RewriteRule ^events$ event.php [L]
+RewriteRule ^contact$ contact.php [L]
+RewriteRule ^authenticate$ authenticate.php [L]
+RewriteRule ^login$ login.php [L]
+RewriteRule ^login-admin$ login-admin.php [L]
+
+RewriteRule ^inscrit-([0-9]+)$ inscrits-detail.php?id=$1 [L]
