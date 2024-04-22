@@ -21,7 +21,7 @@
 >
     <head>
         <meta charset="utf-8" />
-        <title>Astuces</title>
+        <title>Actualités</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta content="Sous-traitance d'excellence, résultats probants" name="description" />
         <meta content="PitUp" name="author" />
@@ -71,33 +71,7 @@
         <div id="layout-wrapper">
             
             <?php require 'views/header.php'; ?>
-
-            <!-- removeNotificationModal -->
-            <div id="removeNotificationModal" class="modal fade zoomIn" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="NotificationModalbtn-close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="mt-2 text-center">
-                                <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop" colors="primary:#f7b84b,secondary:#f06548" style="width: 100px; height: 100px;"></lord-icon>
-                                <div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
-                                    <h4>Are you sure ?</h4>
-                                    <p class="text-muted mx-4 mb-0">Are you sure you want to remove this Notification ?</p>
-                                </div>
-                            </div>
-                            <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
-                                <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn w-sm btn-danger" id="delete-notification">Yes, Delete It!</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.modal-content -->
-                </div>
-                <!-- /.modal-dialog -->
-            </div>
-            <!-- /.modal -->
+            
             <!-- ========== App Menu ========== -->
             <?php require 'views/nav.php'; ?>
             <!-- Left Sidebar End -->
@@ -127,18 +101,13 @@
                             <div class="col-lg-12">
                                 <div class="card">
                                     <div class="card-header d-flex align-items-center justify-content-between">
-                                        <h5 class="card-title mb-0">Les Astuces</h5>
+                                        <h5 class="card-title mb-0">Les Actualités</h5>
                                         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#dépôts">NOUVEAU</button>
                                     </div>
                                     <div class="card-body">
                                         <table id="example" class="table table-bordered dt-responsive nowrap table-striped align-middle" style="width: 100%;">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col" style="width: 10px;">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input fs-15" type="checkbox" id="checkAll" value="option" />
-                                                        </div>
-                                                    </th>
                                                     <th data-ordering="false">Titre</th>
                                                     <th data-ordering="false">Secteur</th>
                                                     <th data-ordering="false">Admin</th>
@@ -152,11 +121,6 @@
                                                     while ($res = $listAll->fetch(PDO::FETCH_OBJ)) {
                                                 ?>
                                                     <tr>
-                                                        <th scope="row">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input fs-15" type="checkbox" name="checkAll" value="option1" />
-                                                            </div>
-                                                        </th>
                                                         <td><?= $res->titre ?></td>
                                                         <td><?= $res->secteurname ?></td>
                                                         <td><?= $res->adminname ?></td>
@@ -192,11 +156,11 @@
         <!-- END layout-wrapper -->
 
         <div class="modal fade" id="dépôts" tabindex="-1" aria-labelledby="varyingcontentModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <form method="POST" action="models/call/astuce/add.php" enctype="multipart/form-data">
+            <div class="modal-dialog modal-lg">
+                <form method="POST" action="" id="myForm" enctype="multipart/form-data">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="varyingcontentModalLabel">Publier une astuce</h5>
+                            <h5 class="modal-title" id="varyingcontentModalLabel">Publication article</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -205,50 +169,108 @@
                                 <label for="title-name" class="col-form-label">Titre:</label>
                                 <input type="text" class="form-control" name="title" id="title-name" required />
                             </div>
-
-                            <div class="mb-3">
-                                <label class="col-form-label">Secteur d'activité:</label>
-                                <select class="form-select" name="sector" required>
-                                    <option value=""></option>
-                                    <?php  
-                                        require 'models/call/astuce/getSecteur.php';
-                                        while ($res = $secteurAll->fetch(PDO::FETCH_OBJ)) {
-                                    ?>
-                                        <option value="<?= $res->id ?>"><?= $res->designation ?></option>
-                                    <?php }$secteurAll->closeCursor(); ?>
-                                </select>
-                            </div>
-
-                            <div class="mb-3">
-                                <label class="col-form-label">Admin:</label>
-                                <select class="form-select" name="admin" required>
-                                    <option value=""></option>
-                                    <?php  
-                                        require 'models/call/astuce/getAdmin.php';
-                                        while ($res = $adminAll->fetch(PDO::FETCH_OBJ)) {
-                                    ?>
-                                        <option value="<?= $res->id ?>"><?= $res->nom ?></option>
-                                    <?php }$adminAll->closeCursor(); ?>
-                                </select>
-                            </div>
                             
-                            <div class="mb-3">
-                                <label for="avatar-name" class="col-form-label">Cover:</label>
-                                <input type="file" class="form-control" name="avatar" id="avatar-name" required />
+                            <div class="row">
+
+                                <div class="mb-3 col-md-4">
+                                    <label class="col-form-label">Secteur d'activité:</label>
+                                    <select class="form-select" name="sector" required>
+                                        <option value=""></option>
+                                        <?php  
+                                            require 'models/call/astuce/getSecteur.php';
+                                            while ($res = $secteurAll->fetch(PDO::FETCH_OBJ)) {
+                                        ?>
+                                            <option value="<?= $res->id ?>"><?= $res->designation ?></option>
+                                        <?php }$secteurAll->closeCursor(); ?>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label class="col-form-label">Admin:</label>
+                                        <select class="form-select" name="admin" required>
+                                            <option value=""></option>
+                                            <?php  
+                                                require 'models/call/astuce/getAdmin.php';
+                                                while ($res = $adminAll->fetch(PDO::FETCH_OBJ)) {
+                                            ?>
+                                                <option value="<?= $res->id ?>"><?= $res->nom ?></option>
+                                            <?php }$adminAll->closeCursor(); ?>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label for="avatar-name" class="col-form-label">Image en avant:</label>
+                                        <input type="file" class="form-control" name="avatar" id="avatar-name" required />
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="mb-3">
                                 <label for="content-name" class="col-form-label">Contenu:</label>
-                                <textarea rows="7" required name="content" id="content-name" class="form-control"></textarea>
+                                <textarea rows="5" required name="content" id="content-name" class="form-control"></textarea>
                             </div>
                             
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-light" data-bs-dismiss="modal">Fermer</button>
-                            <button type="submit" class="btn btn-primary">Ajouter</button>
+                            <button type="button" id="btnsave" class="btn btn-primary">Ajouter</button>
                         </div>
                     </div>
                 </form>
+
+                <script src="https://cdn.ckeditor.com/ckeditor5/41.2.1/classic/ckeditor.js"></script>
+                <script>
+
+                    ClassicEditor
+                        .create( document.querySelector( '#content-name' ) )
+                        .then( newEditor => {
+                            editor = newEditor;
+                        } )
+                        .catch( error => {
+                            console.error( error );
+                        } );
+
+                    // Assuming there is a <button id="submit">Submit</button> in your application.
+                    document.querySelector( '#btnsave' ).addEventListener( 'click', () => {
+                        editorData = editor.getData();
+                        submitForm(editorData)
+                    } );
+
+
+                    function submitForm(content) {
+                        // Récupérer les données du formulaire
+                        const formData = new FormData(document.getElementById('myForm'));
+
+                        // Envoyer les données à un script PHP via AJAX
+                        fetch('models/call/astuce/add.php?content='+content, {
+                            method: 'POST',
+                            body: formData
+                        })
+                        .then(response => {
+                            if (!response.ok) {
+                                window.location.reload()
+                                return
+                            }
+                            // return response.text();
+                            window.location.reload()
+                            return
+                        })
+                        .then(data => {
+                            window.location.reload() // Afficher la réponse du script PHP
+                            return
+                        })
+                        .catch(error => {
+                            window.location.reload()
+                            return
+                        });
+                    }
+
+
+                </script>
+
             </div>
         </div>
 

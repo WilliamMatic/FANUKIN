@@ -73,10 +73,10 @@
                     if ($pageUrl == "/FANUKIN/news") {
                 ?>
                     <li class="dropdown active">
-                        <a href="#">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                             Autres
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <ul class="dropdown-menu">
                             <?php  
                                 if ($pageUrl == "/FANUKIN/news") {
                             ?>
@@ -130,10 +130,10 @@
                     </li>
                 <?php }else{ ?>
                     <li class="dropdown">
-                        <a href="#">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                             Autres
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <ul class="dropdown-menu">
                             <?php  
                                 if ($pageUrl == "/FANUKIN/news") {
                             ?>

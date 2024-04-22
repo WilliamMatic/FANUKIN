@@ -67,6 +67,12 @@
                         <i class="fa-regular fa-message"></i> <span data-key="t-layouts">Messages</span>
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="forms">
+                        <i class="fa-solid fa-file"></i> <span data-key="t-layouts">Formulaires</span>
+                    </a>
+                </li>
                 <!-- end Dashboard Menu -->
 
                 <li class="menu-title"><i class="ri-more-fill"></i> <span data-key="t-pages">Opérations</span></li>
@@ -88,7 +94,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="alumnis">
+                    <a class="nav-link menu-link" href="pictures">
                         <i class="fa-solid fa-image"></i> <span data-key="t-landing">
                             Galeries
                         </span>

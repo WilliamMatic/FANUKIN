@@ -164,7 +164,7 @@
         <section class="irs-teachers-field">
             <div class="container">
                 <div class="row animatedParent animateOnce">
-                    <p>Aucun Projets ou programmes pour le moment</p>
+                    <p>Aucun projet ou programmes pour le moment</p>
                 </div>
             </div>
         </section>

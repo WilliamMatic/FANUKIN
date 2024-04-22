@@ -164,7 +164,34 @@
         <section class="irs-teachers-field">
             <div class="container">
                 <div class="row animatedParent animateOnce">
-                    <p>Aucune article pour le moment</p>
+                    
+                    <?php  
+                        require 'models/articles.php';
+                        while ($res = $req->fetch(PDO::FETCH_OBJ)) {
+                    ?>
+
+                        <div class="col-md-4 col-sm-6">
+                            <div class="irs-courses-col irs-blog-col animated fadeInLeftShort slow delay-250">
+                                <div class="irs-courses-img">
+                                    <img src="admins/assets/astuce/<?= $res->avatar ?>" alt="" />
+                                </div>
+                                <div class="irs-info-text">
+                                    <ul class="clearfix">
+                                        <li>
+                                            <p><i class="icofont icofont-clock-time"></i> <a href="article-<?= $res->id ?>"><?= $res->datepub ?></a></p>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="irs-courses-content">
+                                    <h4><a href="article-<?= $res->id ?>"><?= $res->titre ?></a></h4>
+                                    <?= substr($res->contenue, 0, 115).'...' ?>
+                                    <a class="btn btn-default irs-btn-transparent-two" href="article-<?= $res->id ?>" role="button">Lire article</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    <?php }$req->closeCursor(); ?>
+
                 </div>
             </div>
         </section>

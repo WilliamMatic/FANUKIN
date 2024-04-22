@@ -1,3 +1,4 @@
+<?php require 'models/fonctions/db.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -165,29 +166,20 @@
             <div class="container">
                 <div class="row animatedParent animateOnce">
 
-                    <div class="col-md-4 col-sm-6">
-                        <div class="irs-teachers-col animated fadeInUpShort slow delay-250">
-                            <a href="#"><img src="assets/images/Alumni/1.jpg" /> </a>
+                    <?php  
+                        require 'models/alumnis.php';
+                        while ($res = $req->fetch(PDO::FETCH_OBJ)) {
+                    ?>
+                        <div class="col-md-4 col-sm-6">
+                            <div class="irs-teachers-col animated fadeInUpShort slow delay-250">
+                                <a href="#"><img src="<?= $res->avatar ?>" alt="" /> </a>
+                                <div class="irs-teachers-name">
+                                    <h4><a href="#"><?= $res->name ?></a></h4>
+                                    <p><?= $res->secteur ?></p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-6">
-                        <div class="irs-teachers-col animated fadeInUpShort slow delay-250">
-                            <a href="#"><img src="assets/images/Alumni/2.jpg" /> </a>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-6">
-                        <div class="irs-teachers-col animated fadeInUpShort slow delay-250">
-                            <a href="#"><img src="assets/images/Alumni/3.jpg" /> </a>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-6">
-                        <div class="irs-teachers-col animated fadeInUpShort slow delay-250">
-                            <a href="#"><img src="assets/images/Alumni/4.jpg" /> </a>
-                        </div>
-                    </div>
+                    <?php }$req->closeCursor(); ?>
 
                 </div>
             </div>

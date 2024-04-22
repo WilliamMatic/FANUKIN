@@ -1,5 +1,7 @@
 <?php 
 
+session_start();
+
 try {
 	
 	require 'fonctions/db.php';
@@ -11,11 +13,15 @@ try {
 	$_POST['form_message'] = htmlspecialchars($_POST['form_message']);
 
 
-	$req = $db->prepare("INSERT INTO tb_message(sujet, nom, telephone, message) VALUES (?,?,?,?) ");
+	$req = $db->prepare("INSERT INTO tb_contact(sujet, nom, phone, message) VALUES (?,?,?,?) ");
 	$req->execute([ $_POST['form_subject'], $_POST['form_name'], $_POST['form_phone'], $_POST['form_message'] ]);
 
-	echo "Opération reussie";
+	$_SESSION['success'] = "Message envoyé";
+	header("Location: ../contact#feed");
+	exit();
 
 } catch (Exception $e) {
-	echo $e;
+	$_SESSION['error'] = "Opération échouée";
+	header("Location: ../contact#feed");
+	exit();
 }

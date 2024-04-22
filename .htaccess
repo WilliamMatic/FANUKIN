@@ -21,3 +21,4 @@ RewriteRule ^login$ login.php [L]
 RewriteRule ^login-admin$ login-admin.php [L]
 
 RewriteRule ^inscrit-([0-9]+)$ inscrits-detail.php?id=$1 [L]
+RewriteRule ^article-([0-9]+)$ article-content.php?id=$1 [L]

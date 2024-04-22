@@ -102,7 +102,7 @@
                                 <div class="card">
                                     <div class="card-header d-flex align-items-center justify-content-between">
                                         <h5 class="card-title mb-0">Les secteurs</h5>
-                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#dépôts">NOUVEAU</button>
+                                        <!-- <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#dépôts">NOUVEAU</button> -->
                                     </div>
                                     <div class="card-body">
                                         <table id="example" class="table table-bordered dt-responsive nowrap table-striped align-middle" style="width: 100%;">
@@ -131,7 +131,7 @@
                                                         <td><?= $res->name ?></td>
                                                         <td>
                                                             <a href="#">
-                                                                <i class="fa-solid fa-trash-can text-danger"></i>
+                                                                -<!-- <i class="fa-solid fa-trash-can text-danger"></i> -->
                                                             </a>
                                                         </td>
                                                     </tr>
@@ -156,35 +156,7 @@
         </div>
         <!-- END layout-wrapper -->
 
-        <div class="modal fade" id="dépôts" tabindex="-1" aria-labelledby="varyingcontentModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <form method="POST" action="models/call/secteur/add.php">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="varyingcontentModalLabel">Ajouter un secteur</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            
-                            <div class="mb-3">
-                                <label for="icon-name" class="col-form-label">Icon:</label>
-                                <input type="text" class="form-control" name="icon" id="icon-name" required />
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="sector-name" class="col-form-label">Nom:</label>
-                                <input type="text" class="form-control" name="secteur" id="sector-name" required />
-                            </div>
-                            
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Fermer</button>
-                            <button type="submit" class="btn btn-primary">Ajouter</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
+        <!--  -->
 
         <!--start back-to-top-->
         <button onclick="topFunction()" class="btn btn-danger btn-icon" id="back-to-top">

@@ -13,7 +13,7 @@ function db()
 // function db()
 // {
 //   try {
-//     $db = new PDO('mysql:host=localhost;dbname=u620751964_fanukin;charset=utf8', 'u620751964_fanukin', 'Fanukin@@Giresse2024', array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
+//     $db = new PDO('mysql:host=localhost;dbname=u338836865_fanukin;charset=utf8', 'u338836865_fanukin', 'Fanukin@@2024', array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
 //     return $db;
 //   } catch (Exception $e) {
 //     die("Erreur lors de la connexion au serveur");

@@ -5,7 +5,7 @@ session_start();
 header("Access-Control-Allow-Origin: *");
 require '../../fonctions/addastuce.php';
 
-add();
+add($_GET['content']);
 
 if (isset($_SESSION['success']) && !empty($_SESSION['success'])) {
 	header("Location: ../../../tips");

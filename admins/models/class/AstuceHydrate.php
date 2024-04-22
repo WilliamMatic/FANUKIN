@@ -21,8 +21,7 @@ class AstuceHydrate
 				tb_secteur.designation AS secteurname FROM tb_astuce 
 				INNER JOIN tb_admin ON tb_astuce.admin = tb_admin.id 
 				INNER JOIN tb_secteur ON tb_secteur.id = tb_astuce.secteur
-				 WHERE tb_astuce.status = 1
-				ORDER BY tb_astuce.titre
+				ORDER BY tb_astuce.id DESC
 			");
 		return $q;
 	}

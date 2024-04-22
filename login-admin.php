@@ -1,5 +1,5 @@
 <?php session_start(); ?>
-
+<?php require 'models/fonctions/db.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>

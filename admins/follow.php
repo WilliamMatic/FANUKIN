@@ -72,32 +72,6 @@
             
             <?php require 'views/header.php'; ?>
 
-            <!-- removeNotificationModal -->
-            <div id="removeNotificationModal" class="modal fade zoomIn" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="NotificationModalbtn-close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="mt-2 text-center">
-                                <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop" colors="primary:#f7b84b,secondary:#f06548" style="width: 100px; height: 100px;"></lord-icon>
-                                <div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
-                                    <h4>Are you sure ?</h4>
-                                    <p class="text-muted mx-4 mb-0">Are you sure you want to remove this Notification ?</p>
-                                </div>
-                            </div>
-                            <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
-                                <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn w-sm btn-danger" id="delete-notification">Yes, Delete It!</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.modal-content -->
-                </div>
-                <!-- /.modal-dialog -->
-            </div>
-            <!-- /.modal -->
             <!-- ========== App Menu ========== -->
             <?php require 'views/nav.php'; ?>
             <!-- Left Sidebar End -->
@@ -129,35 +103,32 @@
                                         <table id="example" class="table table-bordered dt-responsive nowrap table-striped align-middle" style="width: 100%;">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col" style="width: 10px;">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input fs-15" type="checkbox" id="checkAll" value="option" />
-                                                        </div>
-                                                    </th>
                                                     <th data-ordering="false">Adresse email</th>
                                                     <th data-ordering="false">Date abonnément</th>
                                                     <th data-ordering="false">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                <?php  
+                                                    require 'models/follow.php';
+                                                    while ($res = $req->fetch(PDO::FETCH_OBJ)) {
+                                                ?>
                                                 <tr>
-                                                    <th scope="row">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input fs-15" type="checkbox" name="checkAll" value="option1" />
-                                                        </div>
-                                                    </th>
                                                     <td>
-                                                        <a href="mailto:xxx@gmail.com">CDD</a>
+                                                        <a href="mailto:xxx@gmail.com"><?= $res->email ?></a>
                                                     </td>
                                                     <td>
-                                                        25-10-2024
+                                                        <?= $res->dateabonnement ?>
                                                     </td>
                                                     <td>
-                                                        <a href="#">
+                                                        <a href="delete-follow.php?id=<?= $res->id ?>" class="me-2">
                                                             <i class="fa-solid fa-trash-can text-danger"></i>
                                                         </a>
                                                     </td>
                                                 </tr>
+                                                <?php  
+                                                    }$req->closeCursor();
+                                                ?>
                                             </tbody>
                                         </table>
                                     </div>

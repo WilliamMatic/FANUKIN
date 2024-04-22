@@ -72,32 +72,6 @@
             
             <?php require 'views/header.php'; ?>
 
-            <!-- removeNotificationModal -->
-            <div id="removeNotificationModal" class="modal fade zoomIn" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="NotificationModalbtn-close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="mt-2 text-center">
-                                <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop" colors="primary:#f7b84b,secondary:#f06548" style="width: 100px; height: 100px;"></lord-icon>
-                                <div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
-                                    <h4>Are you sure ?</h4>
-                                    <p class="text-muted mx-4 mb-0">Are you sure you want to remove this Notification ?</p>
-                                </div>
-                            </div>
-                            <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
-                                <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn w-sm btn-danger" id="delete-notification">Yes, Delete It!</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.modal-content -->
-                </div>
-                <!-- /.modal-dialog -->
-            </div>
-            <!-- /.modal -->
             <!-- ========== App Menu ========== -->
             <?php require 'views/nav.php'; ?>
             <!-- Left Sidebar End -->
@@ -111,87 +85,67 @@
                 <div class="page-content">
                     <div class="container-fluid">
 
-                        <?php if (isset($_SESSION['error']) && !empty($_SESSION['error'])): ?>
-                            <div class="alert alert-danger" role="alert">This is page in wihch we have used <b>jQuery</b> with cnd link!</div>
-                        <?php endif ?>
+                        <?php  
+                            require 'models/view-message.php';
+                            if ($res = $req->fetch(PDO::FETCH_OBJ)) {
+                        ?>
 
-                        <?php if (isset($_SESSION['success']) && !empty($_SESSION['success'])): ?>
-                            <div class="alert alert-success" role="alert">This is page in wihch we have used <b>jQuery</b> with cnd link!</div>
-                        <?php endif ?>
-
-                        <div class="row justify-content-center">
-                            <div class="col-lg-10">
-                                <div class="card">
-                                    <div class="bg-warning-subtle position-relative">
-                                        <div class="card-body p-5">
-                                            <div class="text-center">
-                                                <h3>Titre</h3>
-                                                <p class="mb-0 text-muted">Envoyé le: 16 Sept, 2022</p>
+                            <div class="row justify-content-center">
+                                <div class="col-lg-10">
+                                    <div class="card">
+                                        <div class="bg-warning-subtle position-relative">
+                                            <div class="card-body p-5">
+                                                <div class="text-center">
+                                                    <h3>Auteur : <b><?= $res->nom ?></b></h3>
+                                                    <p class="mb-0 text-muted">Numéro telephone : <b><?= $res->phone ?></b></p>
+                                                </div>
+                                            </div>
+                                            <div class="shape">
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    version="1.1"
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                    xmlns:svgjs="http://svgjs.com/svgjs"
+                                                    width="1440"
+                                                    height="60"
+                                                    preserveAspectRatio="none"
+                                                    viewBox="0 0 1440 60"
+                                                >
+                                                    <g mask='url("#SvgjsMask1001")' fill="none">
+                                                        <path d="M 0,4 C 144,13 432,48 720,49 C 1008,50 1296,17 1440,9L1440 60L0 60z" style="fill: var(--vz-secondary-bg);"></path>
+                                                    </g>
+                                                    <defs>
+                                                        <mask id="SvgjsMask1001">
+                                                            <rect width="1440" height="60" fill="#ffffff"></rect>
+                                                        </mask>
+                                                    </defs>
+                                                </svg>
                                             </div>
                                         </div>
-                                        <div class="shape">
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                version="1.1"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                xmlns:svgjs="http://svgjs.com/svgjs"
-                                                width="1440"
-                                                height="60"
-                                                preserveAspectRatio="none"
-                                                viewBox="0 0 1440 60"
-                                            >
-                                                <g mask='url("#SvgjsMask1001")' fill="none">
-                                                    <path d="M 0,4 C 144,13 432,48 720,49 C 1008,50 1296,17 1440,9L1440 60L0 60z" style="fill: var(--vz-secondary-bg);"></path>
-                                                </g>
-                                                <defs>
-                                                    <mask id="SvgjsMask1001">
-                                                        <rect width="1440" height="60" fill="#ffffff"></rect>
-                                                    </mask>
-                                                </defs>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <div class="card-body p-4">
-                                        <div class="d-flex">
-                                            <div class="flex-shrink-0 me-3">
-                                                <i data-feather="check-circle" class="text-success icon-dual-success icon-xs"></i>
+                                        <div class="card-body p-4">
+                                            <div class="d-flex">
+                                                <div class="flex-shrink-0 me-3">
+                                                    <i data-feather="check-circle" class="text-success icon-dual-success icon-xs"></i>
+                                                </div>
+                                                <div class="flex-grow-1">
+                                                    <h5><?= $res->sujet ?></h5>
+                                                    <p class="text-muted">
+                                                        <?= $res->message ?>
+                                                    </p>
+                                                </div>
                                             </div>
-                                            <div class="flex-grow-1">
-                                                <h5>Message</h5>
-                                                <p class="text-muted">
-                                                    At Website Name, accessible at Website.com, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and
-                                                    recorded by Website Name and how we use it.
-                                                </p>
-                                                <p class="text-muted">
-                                                    At Website Name, accessible at Website.com, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and
-                                                    recorded by Website Name and how we use it.
-                                                </p>
-                                                <p class="text-muted">
-                                                    At Website Name, accessible at Website.com, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and
-                                                    recorded by Website Name and how we use it.
-                                                </p>
-                                                <p class="text-muted">
-                                                    At Website Name, accessible at Website.com, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and
-                                                    recorded by Website Name and how we use it.
-                                                </p>
-                                                <p class="text-muted">
-                                                    At Website Name, accessible at Website.com, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and
-                                                    recorded by Website Name and how we use it.
-                                                </p>
-                                                <p class="text-muted">
-                                                    At Website Name, accessible at Website.com, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and
-                                                    recorded by Website Name and how we use it.
-                                                </p>
-                                            </div>
-                                        </div>
 
-                                        <div class="text-end">
-                                            <a href="mailto:xxx@gmail.com" class="btn btn-primary">Repondre via mail</a>
+                                            <div class="text-end">
+                                                <a href="tel:<?= $res->phone ?>" class="btn btn-primary">Repondre par appel</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+
+                        <?php } ?>
+
+                        <?php require 'models/status-message.php'; ?>
 
                         <!-- end row -->
                     </div>

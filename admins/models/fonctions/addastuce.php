@@ -1,9 +1,9 @@
 <?php 
 
-function add(){
+function add($content){
 
 	$_POST['title'] = htmlspecialchars(trim($_POST['title']));
-	$_POST['content'] = htmlspecialchars(trim($_POST['content']));
+	$_POST['content'] = $content;
 
 	$_POST['sector'] = (int) $_POST['sector'];
 	$_POST['admin'] = (int) $_POST['admin'];
@@ -25,17 +25,17 @@ function add(){
 
 			$infosfichier = pathinfo($_FILES['avatar']['name']);
 			$extension_upload = $infosfichier['extension'];
-			$extensions_autorisees = array('PNG', 'png', 'JPG', 'jpg', 'JPEG', 'jpeg');
+			$extensions_autorisees = array('PNG', 'png', 'JPG', 'jpg', 'JPEG', 'jpeg', 'webp');
 			
 			if (in_array($extension_upload, $extensions_autorisees)) {
 				
-				$id_avatar = $_POST['admin'].'_'.uniqid();
+				$id_avatar = rand(100, 999).'_'.uniqid();
 				$avatar = $id_avatar.'.'.$extension_upload;
 
 				try {
 
 					$req = $db->prepare("SELECT * FROM tb_astuce WHERE titre = ?");
-					$req->execute([ $_POST['titre'] ]);
+					$req->execute([ $_POST['title'] ]);
 
 					if ($res = $req->rowCount() > 0 ) {
 						
@@ -61,9 +61,9 @@ function add(){
 
 							}else{
 								
-								$req = $db->prepare("INSERT INTO tb_astuce(titre, secteur, contenue, admin, datepublish, avatar) VALUES (?,?,?,?,?,?) ");
+								$req = $db->prepare("INSERT INTO tb_astuce(titre, secteur, contenue, admin, datepublish, avatar, status) VALUES (?,?,?,?,?,?,?) ");
 								$date = date('Y-m-d');
-								$req->execute([ $_POST['title'], $_POST['sector'], $_POST['content'], $_POST['admin'], $date, $avatar ]);
+								$req->execute([ $_POST['title'], $_POST['sector'], $_POST['content'], $_POST['admin'], $date, $avatar, 1 ]);
 
 								move_uploaded_file($_FILES['avatar']['tmp_name'], '../../../assets/astuce/' . $avatar);
 

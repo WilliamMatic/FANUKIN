@@ -31,16 +31,17 @@
             <div class="col-md-4">
                 <div class="irs-footer-tweets">
                     <h4 class="irs-footer-heading">Derniers news</h4>
-                    <div class="irs-tweets">
-                        <i class="fa fa-book" aria-hidden="true"></i>
-                        <p><a href="#">FANUKIN</a> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtin.</p>
-                        <a href="#">il y a environ 5 minutes</a>
-                    </div>
-                    <div class="irs-tweets">
-                        <i class="fa fa-book" aria-hidden="true"></i>
-                        <p><a href="#">FANUKIN</a> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtin.</p>
-                        <a href="#">il y a environ 5 minutes</a>
-                    </div>
+                    <?php  
+                        require 'models/articles-footer.php';
+                        while ($res = $req->fetch(PDO::FETCH_OBJ)) {
+                    ?>
+                        <div class="irs-tweets">
+                            <p><i class="fa fa-book" aria-hidden="true"></i>&nbsp;&nbsp;<a href="article-<?= $res->id ?>"><?= $res->titre ?></a></p>
+                            <span style="font-size: .8em;">Publiée le <?= $res->datepub ?></span>
+                        </div>
+                    <?php  
+                        }$req->closeCursor();
+                    ?>
                 </div>
             </div>
             <div class="col-md-3">

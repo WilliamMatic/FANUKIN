@@ -1,5 +1,5 @@
 <?php session_start(); ?>
-
+<?php require 'models/fonctions/db.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -18,8 +18,6 @@
         <link rel="stylesheet" href="assets/css/style.css" />
         <!-- Responsive stylesheet -->
         <link rel="stylesheet" href="assets/css/responsive.css" />
-
-        
 
         
         <!-- Fontawesome -->
@@ -163,7 +161,7 @@
         <!-- Inner page hedaing end -->
 
         <!-- Account start -->
-        <section class="irs-account-field">
+        <section class="irs-account-field" id="feed">
 
             <div class="container">
                 
@@ -183,11 +181,9 @@
                     <div class="col-md-6">
                         <div class="irs-account-col">
                             <h3><b>Se connecter</b></h3>
-                            <form action="inscrits/models/call/candidat/login" method="POST" novalidate="novalidate">
-                                <input id="form_user_name" name="form_user_name" class="form-control" placeholder="Nom utilisateur*" required="required" data-error="User Name." type="text" />
-                                <input id="user_password" name="user_password" type="password" class="form-control" placeholder="Mot de passe*" required="required" data-error="User Name." value="" />
-                                <label> <input id="password_remember" name="rememberme" type="checkbox" value="" /> Se souvenir de moi</label>
-                                <br />
+                            <form action="inscrits/models/call/candidat/login" method="POST">
+                                <input type="email" name="form_user_name" required class="form-control" placeholder="Nom utilisateur*" />
+                                <input  type="password" name="user_password" required class="form-control" placeholder="Mot de passe*" />
                                 <button class="btn btn-default irs-big-btn" type="submit">Se connecter</button>
                             </form>
                         </div>
@@ -200,8 +196,19 @@
                                 Télécharger le formulaire d'inscription
                             </a>
 
+                            <div style="margin-bottom: 50px;">
+                                <h3><b>Envoi du formulaire</b></h3>
+                                <form action="models/send-form.php" method="POST" enctype="multipart/form-data">
+                                    
+                                    <input name="avatar" class="form-control" required="required" type="file" />
+
+                                    <button class="btn btn-default irs-big-btn" style="margin-top: -15px;" type="submit">Envoyer</button>
+
+                                </form>
+                            </div>
+
                             <h3><b>S'inscrire</b></h3>
-                            <form action="inscrits/models/call/candidat/signup" method="post" novalidate="novalidate">
+                            <form action="inscrits/models/call/candidat/signup" method="post">
                                 
                                 <input id="form_full_name" name="name" class="form-control" placeholder="Nom complet*" required="required" data-error="First Name." type="text" />
 

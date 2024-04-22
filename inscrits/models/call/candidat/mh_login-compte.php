@@ -26,6 +26,6 @@ if (isset($_SESSION['success']) && !empty($_SESSION['success'])) {
 }
 
 if (isset($_SESSION['error']) && !empty($_SESSION['error'])) {
-	header("Location: ../../../../");
+	header("Location: ../../../../authenticate#feed");
 	exit();
 }

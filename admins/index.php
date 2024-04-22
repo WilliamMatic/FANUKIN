@@ -98,6 +98,7 @@
             <!-- Start right Content here -->
             <!-- ============================================================== -->
             <div class="main-content">
+                <?php exit(); ?>
                
                 <div class="page-content">
                     <div class="container-fluid">

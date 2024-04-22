@@ -31,17 +31,17 @@ if ($_POST['password'] == $_POST['confirmpassword']) {
 	$manager->add($create);
 
 	if (isset($_SESSION['success']) && !empty($_SESSION['success'])) {
-		header("Location: ../../../../authenticate");
+		header("Location: ../../../../authenticate#feed");
 		exit();
 	}
 
 	if (isset($_SESSION['error']) && !empty($_SESSION['error'])) {
-		header("Location: ../../../../authenticate");
+		header("Location: ../../../../authenticate#feed");
 		exit();
 	}
 
 }else{
 	$_SESSION['error'] = "Le deux mot de passe ne sont pas identique";
-	header("Location: ../../../../authenticate");
+	header("Location: ../../../../authenticate#feed");
 	exit();
 }

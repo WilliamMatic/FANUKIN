@@ -25,6 +25,8 @@ RewriteRule ^featuredtips$ featuredtips.php [L]
 RewriteRule ^followers$ followers.php [L]
 RewriteRule ^missions$ missions.php [L]
 RewriteRule ^alumnis$ alumins.php [L]
+RewriteRule ^pictures$ pictures.php [L]
+RewriteRule ^forms$ forms.php [L]
 
 RewriteRule ^city-([0-9]+)$ city.php?id=$1 [L]
 RewriteRule ^message-([0-9]+)$ message-content.php?id=$1 [L]

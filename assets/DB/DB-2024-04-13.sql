@@ -17,25 +17,25 @@
 -- Listage de la structure de table fanukin. tb_abonne
 CREATE TABLE IF NOT EXISTS `tb_abonne` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `email` text ,
+  `email` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
   `dateabonnement` date DEFAULT NULL,
   `status` tinyint DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Listage des données de la table fanukin.tb_abonne : ~0 rows (environ)
 
 -- Listage de la structure de table fanukin. tb_admin
 CREATE TABLE IF NOT EXISTS `tb_admin` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `nom` text ,
-  `telephone` text ,
-  `email` text ,
-  `avatar` text ,
-  `pwd` text ,
+  `nom` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `telephone` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `email` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `avatar` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `pwd` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
   `status` tinyint DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Listage des données de la table fanukin.tb_admin : ~2 rows (environ)
 INSERT INTO `tb_admin` (`id`, `nom`, `telephone`, `email`, `avatar`, `pwd`, `status`) VALUES
@@ -45,15 +45,15 @@ INSERT INTO `tb_admin` (`id`, `nom`, `telephone`, `email`, `avatar`, `pwd`, `sta
 -- Listage de la structure de table fanukin. tb_astuce
 CREATE TABLE IF NOT EXISTS `tb_astuce` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `titre` text ,
+  `titre` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
   `secteur` int DEFAULT NULL,
-  `contenue` text ,
+  `contenue` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
   `admin` int DEFAULT NULL,
   `datepublish` date DEFAULT NULL,
-  `avatar` text ,
+  `avatar` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
   `status` tinyint DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Listage des données de la table fanukin.tb_astuce : ~0 rows (environ)
 
@@ -61,28 +61,28 @@ CREATE TABLE IF NOT EXISTS `tb_astuce` (
 CREATE TABLE IF NOT EXISTS `tb_avatar` (
   `id` int NOT NULL AUTO_INCREMENT,
   `candidat` int DEFAULT NULL,
-  `avatar` text ,
+  `avatar` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
   `datepublish` date DEFAULT NULL,
   `status` tinyint DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Listage des données de la table fanukin.tb_avatar : ~0 rows (environ)
 
 -- Listage de la structure de table fanukin. tb_candidat
 CREATE TABLE IF NOT EXISTS `tb_candidat` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` text ,
+  `name` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
   `datenaiss` date DEFAULT NULL,
-  `phone` text ,
-  `email` text ,
-  `salaire` text ,
-  `avatar` text ,
-  `password` text ,
-  `profil` text ,
-  `country` text ,
-  `city` text ,
-  `secteur` text ,
+  `phone` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `email` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `salaire` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `avatar` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `password` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `profil` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `country` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `city` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `secteur` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
   `secteur_id` int NOT NULL,
   `type_candidat` tinyint DEFAULT '0',
   `status` tinyint DEFAULT '1',
@@ -92,45 +92,17 @@ CREATE TABLE IF NOT EXISTS `tb_candidat` (
   `niveau` text COLLATE utf8mb4_general_ci,
   `adresse` text COLLATE utf8mb4_general_ci,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 ;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Listage des données de la table fanukin.tb_candidat : ~26 rows (environ)
-INSERT INTO `tb_candidat` (`id`, `name`, `datenaiss`, `phone`, `email`, `salaire`, `avatar`, `password`, `profil`, `country`, `city`, `secteur`, `secteur_id`, `type_candidat`, `status`, `ville`, `faculte`, `annee`, `niveau`, `adresse`) VALUES
-	(2, 'Willyam Insisili', '2005-05-02', '0970665141', 'ngutshinsisili@gmail.com', '4500$', '2_65f7947ab120a.jpeg', '4255cb842e55f2d9b11720ee9c5b87a61960d4533f352e348d77d8983585900d6091ad138b7c5145f3d05a0c807445d33ad9cdd9458ed4494ce46ce23eddf60a', 'En tant que développeur web et mobile, je suis spécialisé dans la création d&#039;expériences numériques intuitives et performantes. Maîtrisant HTML, CSS, JavaScript, et divers frameworks comme React et Flutter, je suis déterminé à concevoir des sites web réactifs et des applications mobiles innovantes, tout en assurant une expérience utilisateur exceptionnelle. Passionné par la technologie et toujours à l&#039;affût des dernières tendances, je m&#039;engage à fournir des solutions de qualité qui répondent aux besoins spécifiques de chaque projet.', NULL, NULL, 'Programmation', 2, 0, 1, NULL, NULL, NULL, NULL, NULL),
-	(3, 'Verone Mansia', NULL, '0970554352', 'verone@gmail.com', NULL, NULL, '57acf66b146e4f606413e8707ffae882a5ea0228de3455c8efffd439f6ef1a2a04eec109d2879bf64c1d7e05cdd808a14db5c5b0f6a4ccf758d0c998058b53cd', NULL, NULL, NULL, NULL, 0, 0, 1, NULL, NULL, NULL, NULL, NULL),
-	(4, 'David Basele', NULL, '0991671553', 'davidbasele3@gmail.com', NULL, NULL, '155c59ef18df99f086ebe6bb5f514519644970d93275d90e71065764fc8be506f481626a70d8904b26846dfaa8f92d2e956cb508ba3d74aef6989a66ba05a7ef', NULL, NULL, NULL, 'Graphiste', 3, 0, 1, NULL, NULL, NULL, NULL, NULL),
-	(5, 'Bonfima osibande', NULL, '0832329099', 'spartebonfima@gmail.com', NULL, NULL, 'e2b4d0fe6e3bc0056bd09d22165d38d434cc0207977ccb679de3a67d3a7265d64227d463048815bb2b42650989585e2315331ba7affcdb610aacbc694bc9e49d', NULL, NULL, NULL, NULL, 0, 0, 1, NULL, NULL, NULL, NULL, NULL),
-	(6, 'LEON KANUNDEY', '2000-07-13', '0853885969', 'lkanundeyi@gamil.com', NULL, NULL, 'c4bb4561810d138fb74c97b9a21c6148e6703fcbfbf0b81e2204f09326a9f770bfe9922f23971e92aed100169d036da064da5fa97806a0020ed8c62cb6191aff', NULL, NULL, NULL, 'Programmation', 2, 0, 1, NULL, NULL, NULL, NULL, NULL),
-	(7, 'Léon kanundey', NULL, '0907247988', 'lkanundeyi@gmail.com', NULL, NULL, '6816bc0dcc5abaebbfae3ed237dcfa12ca0dd610f4220b0e1ada88c25845750fc1979dc3d39f7126599de03c8e399ac59f45dc52fb2855b13dd2a20e3f174fe4', NULL, NULL, NULL, NULL, 0, 0, 1, NULL, NULL, NULL, NULL, NULL),
-	(8, 'Verone Mansia', NULL, '0818345473', 'veroneinsisili@gmail.com', NULL, NULL, '57acf66b146e4f606413e8707ffae882a5ea0228de3455c8efffd439f6ef1a2a04eec109d2879bf64c1d7e05cdd808a14db5c5b0f6a4ccf758d0c998058b53cd', NULL, NULL, NULL, NULL, 0, 0, 1, NULL, NULL, NULL, NULL, NULL),
-	(9, 'Bones Insisili', NULL, '0826627897', NULL, NULL, NULL, 'f6dda54793349a9e284dd4a1daf0cc30f7aceee0c0a6a368575074c9931e8e43f7ff9858dab3824c272849a84948b86a6be1bfa50825d4c7c0546bd0799b655e', NULL, NULL, NULL, NULL, 0, 0, 1, NULL, NULL, NULL, NULL, NULL),
-	(10, 'Bones Insisili', NULL, '0890007765', 'bones@gmail.com', NULL, NULL, 'f6dda54793349a9e284dd4a1daf0cc30f7aceee0c0a6a368575074c9931e8e43f7ff9858dab3824c272849a84948b86a6be1bfa50825d4c7c0546bd0799b655e', NULL, NULL, NULL, NULL, 0, 0, 1, NULL, NULL, NULL, NULL, NULL),
-	(11, 'Hornella Meta', NULL, '0893322111', 'hornella@gmail.com', NULL, NULL, '57acf66b146e4f606413e8707ffae882a5ea0228de3455c8efffd439f6ef1a2a04eec109d2879bf64c1d7e05cdd808a14db5c5b0f6a4ccf758d0c998058b53cd', NULL, NULL, NULL, NULL, 0, 0, 1, NULL, NULL, NULL, NULL, NULL),
-	(13, 'Basile NDOMBASI Basile', NULL, '0896628493', 'bandcreaentreprise@gmail.com', NULL, '13_65ff03109cb0d.jpg', '8f4bb23c96ed98f11274ea70279d153949d84c134b092db2245d2caaec72f9849ba9eaadc0a60e68bce898c65d4a14e1a1cc256688158ebd4836ca43b8667956', 'Je suis un professionnel dans la conception de visuelle avec une expérience de 10 ans  d&#039;activité pour les entreprises, ong, les églises etc. Toute personne qui va me contacter ne sera pas du tout déçu de mon travail exceptionnel.', NULL, NULL, 'Graphiste', 3, 0, 1, NULL, NULL, NULL, NULL, NULL),
-	(14, 'Djanny kabeya', NULL, '+243 822150595', 'kabeyadjanny710@gmail.com', NULL, '14_6602e506b2194.jpg', '4555a411ae3ed719701fa50b35bc460c9775e048d77a659ca721643d046c95b82a09a9df0245733a164dc05d0731de50ddd3eefb0ebe891f3629230f048ef3f2', 'Je suis un photographe professionnel pour la couverture des vos événements tel que : mariage civil, coutumier, religieux, concert, conférence et tant d&#039;autres.. avec une expérience de 9 ans dans le secteur avec une qualité de service impeccable, contactez moi enfin que je puisse vous donnez un travail qu&#039;il faut selon vos attentes', NULL, NULL, 'Photographie & Vidéographie', 1, 0, 1, NULL, NULL, NULL, NULL, NULL),
-	(15, 'Julie bogano mpembe', NULL, '+243 897941522', NULL, NULL, NULL, 'd99f8e4bc1b464f5aac2092c77c7a09cdb2d79b919696982cef9ca1d06509ce1323edefcda36eebbca7e50c88ccbf7f8b955bbf654c05cd9f1557d7371390fec', NULL, NULL, NULL, NULL, 0, 0, 1, NULL, NULL, NULL, NULL, NULL),
-	(16, 'Othniel tshima', NULL, '+243 823608856', 'othnieltshiama31@gmail.com', NULL, '16_65ff2790abf6e.jpg', 'd99f8e4bc1b464f5aac2092c77c7a09cdb2d79b919696982cef9ca1d06509ce1323edefcda36eebbca7e50c88ccbf7f8b955bbf654c05cd9f1557d7371390fec', 'Je suis un professionnel dans la conception de visuelle avec une expérience de 4 ans d&#039;activité pour les entreprises, ong, les églises etc. Toute personne qui va me contacter ne sera pas du tout déçu de mon travail exceptionnel.', NULL, NULL, 'Graphiste', 3, 0, 1, NULL, NULL, NULL, NULL, NULL),
-	(18, 'Mervedi matondo', NULL, '+243828009063', 'mervedimatondo712@gmail.com', NULL, '18_65ff4a27d1d41.jpg', 'ce2467d0e773a36e0c4c51a59f9c93c92bd83bbc1b910784e474c7d5593a320b976a377ba3ed3bf263eeb90a1b780bbe8b7eb5f994a4a2f71764003bbb80b0b8', 'Je suis une jeune femme professionnelle excellent dans la coiffure dames qui met sa créativité artistique pour mettre en valeur où la métamorphoser des visages de toute femmes avec un style particulier .', NULL, NULL, 'Maquillage & Coiffure', 5, 0, 1, NULL, NULL, NULL, NULL, NULL),
-	(19, 'Kakesa Parker', NULL, '+243811635436', 'liyaparker952@gmail.com', NULL, '19_65fff5d101cff.jpg', 'a9cf249b3419d512a324afd6b10665944b72d294c766bbdf78288bd1d858aa80aa55d78d06d7f8adf79e3204474a402854962bd48c1f5889eee50ca2de2012d8', 'Je suis un photographe, vidéaste avec une expérience de 5 ans dans la couverture de toute sorte d&#039;événements tel que le mariage religieux, civil, coutumier, anniversaire, concert.', NULL, NULL, 'Photographie & Vidéographie', 1, 0, 1, NULL, NULL, NULL, NULL, NULL),
-	(21, 'Vip- kitoko', '1997-09-03', '+243 97 50 75 588', 'ketsiamulanga1@gmail.com', NULL, '21_660007c783b14.jpg', '4ef89b846fce983c9523af63d2ea3844b356b50c3b6b5e2f0764d0103a0c2ba911ca0a98d42a34e15e704c7baa6ff5389584f4645bbbe665c5ed00f83d4df1c5', 'En étant, professionnelle et expérimenté dans le maquillage avec une expérience de 3 ans  résidente à Kinshasa je m&#039;engage à donner un service de qualité à toute personne qui va me contacter', NULL, NULL, 'Maquillage & Coiffure', 5, 0, 1, NULL, NULL, NULL, NULL, NULL),
-	(22, 'Yolka_beauty', NULL, '0830069573', 'mwika01@gmail.com', NULL, '22_66000d4bc0774.jpg', '29179d2576c3349301703d2006b82ad0b1ee1c16fad9bc5ffd0b043f87cc92e5e92b43cf0a92b1167eb6bc3097ab05240daed2b621693560853e488cb9c05dfc', 'Je suis une professionnelle dans la coiffure dames et maquillage qui met tout sa créativité, son intelligence enfin de métamorphoser des visages avec le maquillage de soirée, prestige et toute sorte de tresse tel que le rasta, écailles, cordelette etc.', NULL, NULL, 'Maquillage & Coiffure', 5, 0, 1, NULL, NULL, NULL, NULL, NULL),
-	(23, 'Mardo photography drc', NULL, '+243825365649', 'mardochembodisa4@gmail.com', NULL, '23_660016d888b15.jpg', '7975d711ce6ced640214d98d74fb0ae4ef15395c4a64da063c6f8bf4ed2da903768e982dfcd8a16228f82d716fd697fd7a1eb6dba030ba45e3e899443be0ee0d', 'Je suis un photographe, vidéaste avec une expérience de 7 ans dans la couverture de toute sorte d&#039;événements tel que le mariage religieux, civil, coutumier, anniversaire, concert et séance photos à la maison, photos studio etc', NULL, NULL, 'Photographie & Vidéographie', 1, 0, 1, NULL, NULL, NULL, NULL, NULL),
-	(24, 'David kadima', NULL, '0828942882', 'kadimamukendi@gmail.com', NULL, '24_660020edf2424.jpg', '92a31e45c21f7de328b5eba78da066f0e641e476ed2868b5a00fb36e8c73d390ee96af38e7d2c93b3873ac4254c0993f1889f396e469dd16cd9344c932219aac', 'Je suis un photographe, vidéaste avec une expérience de 7 ans dans la couverture de toute sorte d&#039;événements tel que le mariage religieux, civil, coutumier, anniversaire, concert et séance photos à la maison, photos studio etc', NULL, NULL, 'Photographie & Vidéographie', 1, 0, 1, NULL, NULL, NULL, NULL, NULL),
-	(25, 'Eagle Eyes communication', NULL, '+243817477771', 'dieumerci.mpeti1@gmail.com', NULL, '25_6600571179a48.jpg', 'e65198ad88a2e6c1124ad68f21177d96c9b4c6eec586d0d5f0d49475126ee9064b42155890186fa73618129be0ab14704516484551a62b79223e912285fdc654', 'Une agence d&#039;audiovisuel et de la photographie avec 5 d&#039;expérience sur le marché et dans le secteur avec une équipe qualifiée, dynamique, pour tout vos cérémonie : mariage civil, coutumier, religieux, concert, conférence nous prêt à vous rendre un service de qualité', NULL, NULL, 'Photographie & Vidéographie', 1, 0, 1, NULL, NULL, NULL, NULL, NULL),
-	(26, 'Thechil  Photography officiel', NULL, '0975476136', 'thechilphotography@gmail.com', NULL, '26_66045c2c0fefe.jpg', '3643e3e710d964a10bfb8ed8d18df6adc5edfd9a3d946dcae2916ef6d01d6e3fbca274cba36c210daa81f898de0eadf76e540c67d896d890848113d6f7f2eb8e', 'Je suis un photographe, vidéaste, réalisateur professionnel avec une expérience de 4 ans dans la couverture de toute sorte d&#039;événements tel que le mariage religieux, civil, coutumier, anniversaire, concert et séance photos à la maison, photos studio etc', NULL, NULL, 'Photographie & Vidéographie', 1, 0, 1, NULL, NULL, NULL, NULL, NULL),
-	(27, 'Rizzdy Kumbi', NULL, '+243816950347', 'riddykumbi@gmail.com', NULL, '27_660462c5e6f11.jpg', 'ab15901456ac77acee1a0448f586be1a0b9f3af665f59fefa1e01ad304a40931e902a03b65baec263457db51a495c72b360803f2648d62df9b6ed40e61786f16', 'Mister design\r\n\r\nArtiste pluridisciplinaire graphic design de son vrai nom rizzdy kumbi est le fondateur et directeur de mister design, il a fait ce études à l&#039;Institut supérieur de statistiques de Kinshasa,il a commencé ce début sur d&#039;apprentissage à l&#039;internet avec une expérience de 7 ans dans le graphisme, rizzdy kumbi est un graphiste designer a succès de nationalité congolaise résident à la ville de Kinshasa', NULL, NULL, 'Graphiste', 3, 0, 1, NULL, NULL, NULL, NULL, NULL),
-	(28, 'S design comms', NULL, '+243 977 899 480', 'samuellenile@gmail.com', NULL, '28_6605963e1cfff.jpg', '962a9d7d8add72d18b87497260730af7a1d49771aaa3b5df87c27b070ae7c1fa2a8e3f25bb86b640e0bb4b0de07e8480a37965472c82d29b39aefe6e3b57d0b7', 'Samuel Lenile graphic design de son vrai le fondateur et directeur s design comms,il a commencé ce début sur d&#039;apprentissage à l&#039;internet avec une expérience de 5 ans dans le graphisme, Samuel Lenile est un graphiste designer a succès de nationalité congolaise résident à la ville de Kinshasa', NULL, NULL, 'Graphiste', 3, 0, 1, NULL, NULL, NULL, NULL, NULL),
-	(29, 'Hardy Tolongo', NULL, '0853605378', 'htstooel@gmail.com', NULL, '29_6607c768ac4a7.jpg', '555f40649e82316b3efba512892f622d2a51805173dec54031d5c7ea8e5eba8ecc269e6bdd03ab3a58f366720bc91f66186b1eab761dc62d7d737fe10a0f7352', 'À propos\r\nJe suis un photographe professionnel pour la couverture des vos événements tel que : mariage civil, coutumier, religieux, concert, conférence et tant d&#039;autres.. nationalité congolaise, résident à Kinshasa avec une expérience de 4 ans dans le secteur avec une qualité de service impeccable.', NULL, NULL, 'Photographie &amp; Vidéographie', 0, 0, 1, NULL, NULL, NULL, NULL, NULL),
-	(30, 'LM beauty', NULL, '+243 829 808 909', 'lovettemuluba35@gmail.com', NULL, '30_66099fb0561c1.jpg', 'c5c15bbbd3d3e3f130fdfc9b87d722f3767fbfbe472daea08a40dc6d7e69e68d4bab6e10c476e93d47df12eb253896acbc3b445bfca54882136a60468349e356', 'LM beauty est un salon de coiffure qui se trouve en RDC précisément à la ville de Kinshasa dans la commune de bandal dirigé par une jeune dame au nom de lovette muluba avec une expérience de 4 ans dans le domaine de la coiffure et maquillage', NULL, NULL, 'Maquillage &amp; Coiffure', 0, 0, 1, NULL, NULL, NULL, NULL, NULL),
-	(31, 'Willyam Zuck', NULL, '0970665100', 'w@gmail.com', NULL, NULL, '3c9909afec25354d551dae21590bb26e38d53f2173b8d3dc3eee4c047e7ab1c1eb8b85103e3be7ba613b31bb5c9c36214dc9f14a42fd7a2fdb84856bca5c44c2', NULL, NULL, NULL, NULL, 1, 0, 1, 'KINSHASA, RDC', 'xxxx', '2023-2024', 'Graduat', 'xxxxxxxx');
 
 -- Listage de la structure de table fanukin. tb_competence
 CREATE TABLE IF NOT EXISTS `tb_competence` (
   `id` int NOT NULL AUTO_INCREMENT,
   `candidat` int DEFAULT NULL,
-  `competences` text ,
+  `competences` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=75 ;
+) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Listage des données de la table fanukin.tb_competence : ~58 rows (environ)
 INSERT INTO `tb_competence` (`id`, `candidat`, `competences`) VALUES
@@ -200,29 +172,29 @@ CREATE TABLE IF NOT EXISTS `tb_competiton` (
   `annee` text,
   `status` tinyint DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Listage des données de la table fanukin.tb_competiton : ~0 rows (environ)
 
 -- Listage de la structure de table fanukin. tb_contact
 CREATE TABLE IF NOT EXISTS `tb_contact` (
-  `nom` text ,
-  `email` text ,
-  `sujet` text ,
-  `phone` text ,
-  `message` text ,
+  `nom` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `email` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `sujet` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `phone` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `message` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
   `status` tinyint DEFAULT '0'
-) ENGINE=InnoDB ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Listage des données de la table fanukin.tb_contact : ~0 rows (environ)
 
 -- Listage de la structure de table fanukin. tb_contrant
 CREATE TABLE IF NOT EXISTS `tb_contrant` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `designation` text ,
+  `designation` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
   `status` tinyint DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Listage des données de la table fanukin.tb_contrant : ~8 rows (environ)
 INSERT INTO `tb_contrant` (`id`, `designation`, `status`) VALUES
@@ -239,12 +211,12 @@ INSERT INTO `tb_contrant` (`id`, `designation`, `status`) VALUES
 CREATE TABLE IF NOT EXISTS `tb_education` (
   `id` int NOT NULL AUTO_INCREMENT,
   `candidat` int DEFAULT NULL,
-  `etablissement` text ,
-  `titre` text ,
+  `etablissement` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `titre` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
   `debut` date DEFAULT NULL,
   `fin` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Listage des données de la table fanukin.tb_education : ~0 rows (environ)
 INSERT INTO `tb_education` (`id`, `candidat`, `etablissement`, `titre`, `debut`, `fin`) VALUES
@@ -254,13 +226,13 @@ INSERT INTO `tb_education` (`id`, `candidat`, `etablissement`, `titre`, `debut`,
 CREATE TABLE IF NOT EXISTS `tb_experience` (
   `id` int NOT NULL AUTO_INCREMENT,
   `candidat` int DEFAULT NULL,
-  `societe` text ,
-  `poste` text ,
-  `contrant` text ,
+  `societe` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `poste` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `contrant` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
   `debut` date DEFAULT NULL,
   `fin` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Listage des données de la table fanukin.tb_experience : ~0 rows (environ)
 INSERT INTO `tb_experience` (`id`, `candidat`, `societe`, `poste`, `contrant`, `debut`, `fin`) VALUES
@@ -270,9 +242,9 @@ INSERT INTO `tb_experience` (`id`, `candidat`, `societe`, `poste`, `contrant`, `
 CREATE TABLE IF NOT EXISTS `tb_langue` (
   `id` int NOT NULL AUTO_INCREMENT,
   `candidat` int DEFAULT NULL,
-  `langue` text ,
+  `langue` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 ;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Listage des données de la table fanukin.tb_langue : ~34 rows (environ)
 INSERT INTO `tb_langue` (`id`, `candidat`, `langue`) VALUES
@@ -314,14 +286,14 @@ INSERT INTO `tb_langue` (`id`, `candidat`, `langue`) VALUES
 -- Listage de la structure de table fanukin. tb_message
 CREATE TABLE IF NOT EXISTS `tb_message` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `sujet` text ,
-  `nom` text ,
-  `email` text ,
-  `telephone` text ,
+  `sujet` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `nom` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `email` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `telephone` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
   `message` text COLLATE utf8mb4_general_ci,
   `status` tinyint DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Listage des données de la table fanukin.tb_message : ~0 rows (environ)
 INSERT INTO `tb_message` (`id`, `sujet`, `nom`, `email`, `telephone`, `message`, `status`) VALUES
@@ -334,10 +306,10 @@ INSERT INTO `tb_message` (`id`, `sujet`, `nom`, `email`, `telephone`, `message`,
 -- Listage de la structure de table fanukin. tb_newsletter
 CREATE TABLE IF NOT EXISTS `tb_newsletter` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `email` varchar(255)  DEFAULT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 ;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Listage des données de la table fanukin.tb_newsletter : ~4 rows (environ)
 INSERT INTO `tb_newsletter` (`id`, `email`) VALUES
@@ -349,10 +321,10 @@ INSERT INTO `tb_newsletter` (`id`, `email`) VALUES
 -- Listage de la structure de table fanukin. tb_pays
 CREATE TABLE IF NOT EXISTS `tb_pays` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `designation` text ,
+  `designation` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
   `status` tinyint DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Listage des données de la table fanukin.tb_pays : ~0 rows (environ)
 INSERT INTO `tb_pays` (`id`, `designation`, `status`) VALUES
@@ -362,10 +334,10 @@ INSERT INTO `tb_pays` (`id`, `designation`, `status`) VALUES
 CREATE TABLE IF NOT EXISTS `tb_porfolio` (
   `id` int NOT NULL AUTO_INCREMENT,
   `candidat` int DEFAULT NULL,
-  `porfolio` text ,
-  `extension` tinytext  NOT NULL,
+  `porfolio` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `extension` tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=218 ;
+) ENGINE=InnoDB AUTO_INCREMENT=218 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Listage des données de la table fanukin.tb_porfolio : ~179 rows (environ)
 INSERT INTO `tb_porfolio` (`id`, `candidat`, `porfolio`, `extension`) VALUES
@@ -552,11 +524,11 @@ INSERT INTO `tb_porfolio` (`id`, `candidat`, `porfolio`, `extension`) VALUES
 -- Listage de la structure de table fanukin. tb_secteur
 CREATE TABLE IF NOT EXISTS `tb_secteur` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `designation` text ,
-  `icon` text ,
+  `designation` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `icon` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
   `status` tinyint DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Listage des données de la table fanukin.tb_secteur : ~7 rows (environ)
 INSERT INTO `tb_secteur` (`id`, `designation`, `icon`, `status`) VALUES
@@ -572,10 +544,10 @@ INSERT INTO `tb_secteur` (`id`, `designation`, `icon`, `status`) VALUES
 CREATE TABLE IF NOT EXISTS `tb_tarification` (
   `id` int NOT NULL AUTO_INCREMENT,
   `candidat` int DEFAULT NULL,
-  `domaine` text ,
-  `cout` text ,
+  `domaine` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `cout` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=88 ;
+) ENGINE=InnoDB AUTO_INCREMENT=88 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Listage des données de la table fanukin.tb_tarification : ~74 rows (environ)
 INSERT INTO `tb_tarification` (`id`, `candidat`, `domaine`, `cout`) VALUES
@@ -658,7 +630,7 @@ INSERT INTO `tb_tarification` (`id`, `candidat`, `domaine`, `cout`) VALUES
 CREATE TABLE IF NOT EXISTS `tb_user` (
   `id` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Listage des données de la table fanukin.tb_user : ~0 rows (environ)
 
@@ -666,10 +638,10 @@ CREATE TABLE IF NOT EXISTS `tb_user` (
 CREATE TABLE IF NOT EXISTS `tb_ville` (
   `id` int NOT NULL AUTO_INCREMENT,
   `pays` int DEFAULT NULL,
-  `designation` text ,
+  `designation` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
   `status` tinyint DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 ;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Listage des données de la table fanukin.tb_ville : ~26 rows (environ)
 INSERT INTO `tb_ville` (`id`, `pays`, `designation`, `status`) VALUES

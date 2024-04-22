@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -137,11 +138,11 @@
     </head>
 
     <body>
-        <!-- Main Header Start -->
+        <!-- Main Header  -->
         <?php require 'views/header.php'; ?>
         <!-- Main Header end -->
 
-        <!-- main slider start -->
+        <!-- main slider  -->
         <section class="irs-main-slider">
             <div class="carousel fade-carousel slide" data-ride="carousel" data-interval="4000" id="bs-carousel">
                 <!-- Indicators -->
@@ -155,9 +156,9 @@
                     <div class="item slides active">
                         <div class="slide-1"></div>
                         <div class="hero">
-                            <span>Connectez-vous avec vos anciens camarades</span>
+                          
                             <h1>
-                                Reconnectez-vous et partagez vos souvenirs!
+                                RESEAUTAGE, FORMATION ET INSERTION PROFESSIONNELLE
                             </h1>
                             <a href="authenticate" class="btn btn-default irs-big-btn" role="button">Nous rejoindre</a>
                         </div>
@@ -165,16 +166,16 @@
                     <div class="item slides">
                         <div class="slide-2"></div>
                         <div class="hero">
-                            <span>Revivez l'esprit de l'université</span>
-                            <h1>Retrouvez vos anciens <strong>amis et camarades</strong>!</h1>
+                          
+                            <h1>APPUI A L’ENSEIGNEMENT ET LA RECHERCHE DE QUALITE</strong>!</h1>
                             <a href="authenticate" class="btn btn-default irs-big-btn" role="button">Nous rejoindre</a>
                         </div>
                     </div>
                     <div class="item slides">
                         <div class="slide-3"></div>
                         <div class="hero">
-                            <span>Communauté des anciens</span>
-                            <h1>Retrouvez votre <strong>réseau étudiant!</strong></h1>
+                          
+                            <h1>PROMOTION DE L’ESPRIT ENTREPRENEURIAL</h1>
                             <a href="authenticate" class="btn btn-default irs-big-btn" role="button">Nous rejoindre</a>
                         </div>
                     </div>
@@ -183,7 +184,7 @@
         </section>
         <!-- Main slider end -->
 
-        <!-- Welcome start -->
+        <!-- Welcome  -->
         <section class="irs-welcome-field">
 
             <div style="margin-bottom: 50px;">
@@ -214,7 +215,7 @@
         </section>
         <!-- Welcome end -->
 
-        <!-- About start -->
+        <!-- About  -->
         <section class="irs-about-field">
             <div class="container">
                 <div class="row">
@@ -244,8 +245,6 @@
                                     professionnelles
                                 </strong>
                             </h4>
-                            <!-- <p>Ut enim ad minim veniam, quis nostrud exercitation ulla laboris nisi ut aliquip ex ea commodo consequat</p> -->
-                            <!-- <a class="btn btn-default irs-btn-transparent" href="#" role="button">En savoir plus</a> -->
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-6">
@@ -259,8 +258,6 @@
                                     entrepreneures de l’UNIKIN
                                 </strong>
                             </h4>
-                            <!-- <p>Ut enim ad minim veniam, quis nostrud exercitation ulla laboris nisi ut aliquip ex ea commodo consequat</p> -->
-                            <!-- <a class="btn btn-default irs-btn-transparent" href="#" role="button">En savoir plus</a> -->
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-6">
@@ -274,8 +271,6 @@
                                     conditions d’enseignement à l’UNIKIN
                                 </strong>
                             </h4>
-                            <!-- <p>Ut enim ad minim veniam, quis nostrud exercitation ulla laboris nisi ut aliquip ex ea commodo consequat</p> -->
-                            <!-- <a class="btn btn-default irs-btn-transparent" href="#" role="button">En savoir plus</a> -->
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-6">
@@ -290,8 +285,6 @@
                                     piliers d’intervention
                                 </strong>
                             </h4>
-                            <!-- <p>Ut enim ad minim veniam, quis nostrud exercitation ulla laboris nisi ut aliquip ex ea commodo consequat</p> -->
-                            <!-- <a class="btn btn-default irs-btn-transparent" href="#" role="button">En savoir plus</a> -->
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-6">
@@ -305,8 +298,6 @@
                                     communication
                                 </strong>
                             </h4>
-                            <!-- <p>Ut enim ad minim veniam, quis nostrud exercitation ulla laboris nisi ut aliquip ex ea commodo consequat</p> -->
-                            <!-- <a class="btn btn-default irs-btn-transparent" href="#" role="button">En savoir plus</a> -->
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-6">
@@ -320,8 +311,6 @@
                                     diverses natures
                                 </strong>
                             </h4>
-                            <!-- <p>Ut enim ad minim veniam, quis nostrud exercitation ulla laboris nisi ut aliquip ex ea commodo consequat</p> -->
-                            <!-- <a class="btn btn-default irs-btn-transparent" href="#" role="button">En savoir plus</a> -->
                         </div>
                     </div>
                 </div>
@@ -329,7 +318,7 @@
         </section>
         <!-- About end -->
 
-        <!-- Counter start -->
+        <!-- Counter  -->
         <section class="irs-counter-field irs-layer-black" style="background: #2c3c93;">
             <div class="container">
                 <div class="row">
@@ -337,7 +326,12 @@
                         <div class="irs-counter-col">
                             <i class="icofont icofont-users-alt-3" style="color: white;"></i>
                             <div class="irs-funfact">
-                                <div class="start-count">+452</div>
+                                <?php  
+                                    require 'models/count-alumni.php';
+                                    if ($res = $req->fetch(PDO::FETCH_OBJ)) {
+                                ?>
+                                    <div class="-count">+<?= $res->nbralumnis ?></div>
+                                <?php } ?>
                                 <div class="clearfix"></div>
                                 <h4>Alumnis</h4>
                             </div>
@@ -347,7 +341,12 @@
                         <div class="irs-counter-col">
                             <i class="icofont icofont-group-students" style="color: white;"></i>
                             <div class="irs-funfact">
-                                <div class="start-count">+32</div>
+                                <?php  
+                                    require 'models/count-projet.php';
+                                    if ($res = $req->fetch(PDO::FETCH_OBJ)) {
+                                ?>
+                                    <div class="-count">+<?= $res->nbrprojets ?></div>
+                                <?php } ?>
                                 <div class="clearfix"></div>
                                 <h4>Evènements</h4>
                             </div>
@@ -357,28 +356,23 @@
                         <div class="irs-counter-col">
                             <i class="icofont icofont-education" style="color: white;"></i>
                             <div class="irs-funfact">
-                                <div class="start-count">+25</div>
+                                <?php  
+                                    require 'models/count-news.php';
+                                    if ($res = $req->fetch(PDO::FETCH_OBJ)) {
+                                ?>
+                                    <div class="-count">+<?= $res->nbrnews ?></div>
+                                <?php } ?>
                                 <div class="clearfix"></div>
                                 <h4>ACTUALITES</h4>
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="col-md-3 col-sm-6 col-xs-6">
-                        <div class="irs-counter-col">
-                            <i class="icofont icofont-university"></i>
-                            <div class="irs-funfact">
-                                <div class="start-count">36</div>
-                                <div class="clearfix"></div>
-                                <h4>EXPERIENCE</h4>
-                            </div>
-                        </div>
-                    </div> -->
                 </div>
             </div>
         </section>
         <!-- Counter end -->
 
-        <!-- Gallery start -->
+        <!-- Gallery  -->
         <section class="irs-gallery-field">
             <div class="container">
                 <div class="row">
@@ -399,94 +393,27 @@
             </div>
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-3 col-sm-6 irs-col-padd-less">
-                        <div class="irs-img-hover">
-                            <img src="assets/images/photos/1.jpg" alt="" />
-                            <div class="irs-layer">
-                                <a class="lightbox-image" href="assets/images/photos/1.jpg" data-fancybox-group="gallery" title="Gallery Photos">
-                                    <i class="zmdi zmdi-loupe"></i>
-                                </a>
+                    <?php  
+                        require 'models/galeries.php';
+                        while ($res = $req->fetch(PDO::FETCH_OBJ)) {
+                    ?>
+                        <div class="col-md-3 col-sm-6 irs-col-padd-less">
+                            <div class="irs-img-hover">
+                                <img src="admins/assets/gallerie/<?= $res->img ?>" alt="" />
+                                <div class="irs-layer">
+                                    <a class="lightbox-image" href="admins/assets/gallerie/<?= $res->img ?>" data-fancybox-group="DANS ALBUM DE FANUKIN" title="Gallery Photos">
+                                        <i class="zmdi zmdi-loupe"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 irs-col-padd-less">
-                        <div class="irs-img-hover">
-                            <img src="assets/images/photos/2.jpg" alt="" />
-                            <div class="irs-layer">
-                                <a class="lightbox-image" href="assets/images/photos/2.jpg" data-fancybox-group="gallery" title="Gallery Photos">
-                                    <i class="zmdi zmdi-loupe"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 irs-col-padd-less">
-                        <div class="irs-img-hover">
-                            <img src="assets/images/photos/3.jpg" alt="" />
-                            <div class="irs-layer">
-                                <a class="lightbox-image" href="assets/images/photos/3.jpg" data-fancybox-group="gallery" title="Gallery Photos">
-                                    <i class="zmdi zmdi-loupe"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 irs-col-padd-less">
-                        <div class="irs-img-hover">
-                            <img src="assets/images/photos/4.jpg" alt="" />
-                            <div class="irs-layer">
-                                <a class="lightbox-image" href="assets/images/photos/4.jpg" data-fancybox-group="gallery" title="Gallery Photos">
-                                    <i class="zmdi zmdi-loupe"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3 col-sm-6 irs-col-padd-less">
-                        <div class="irs-img-hover">
-                            <img src="assets/images/photos/5.jpg" alt="" />
-                            <div class="irs-layer">
-                                <a class="lightbox-image" href="assets/images/photos/5.jpg" data-fancybox-group="gallery" title="Gallery Photos">
-                                    <i class="zmdi zmdi-loupe"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 irs-col-padd-less">
-                        <div class="irs-img-hover">
-                            <img src="assets/images/photos/6.jpg" alt="" />
-                            <div class="irs-layer">
-                                <a class="lightbox-image" href="assets/images/photos/6.jpg" data-fancybox-group="gallery" title="Gallery Photos">
-                                    <i class="zmdi zmdi-loupe"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 irs-col-padd-less">
-                        <div class="irs-img-hover">
-                            <img src="assets/images/photos/7.jpg" alt="" />
-                            <div class="irs-layer">
-                                <a class="lightbox-image" href="assets/images/photos/7.jpg" data-fancybox-group="gallery" title="Gallery Photos">
-                                    <i class="zmdi zmdi-loupe"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 irs-col-padd-less">
-                        <div class="irs-img-hover">
-                            <img src="assets/images/photos/8.jpg" alt="" />
-                            <div class="irs-layer">
-                                <a class="lightbox-image" href="assets/images/photos/8.jpg" data-fancybox-group="gallery" title="Gallery Photos">
-                                    <i class="zmdi zmdi-loupe"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                    <?php }$req->closeCursor(); ?>
                 </div>
             </div>
         </section>
         <!-- Gallery end -->
 
-        <!-- Teachers start -->
+        <!-- Alumni  -->
         <section class="irs-teachers-field">
             <div class="container">
                 <div class="row">
@@ -505,72 +432,26 @@
                     </div>
                 </div>
                 <div class="row animatedParent animateOnce">
-                    <div class="col-md-3 col-sm-6">
-                        <div class="irs-teachers-col animated fadeInUpShort slow delay-250">
-                            <a href="#"><img src="assets/images/Alumni/1.jpg" alt="" /> </a>
-                            <!-- <div class="irs-teachers-name">
-                                <h4><a href="inscrit-1">Rosi Jqulin</a></h4>
-                                <p>math teacher</p>
+                    <?php  
+                        require 'models/alumnis-index.php';
+                        while ($res = $req->fetch(PDO::FETCH_OBJ)) {
+                    ?>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="irs-teachers-col animated fadeInUpShort slow delay-250">
+                                <a href="#"><img src="<?= $res->avatar ?>" alt="" /> </a>
+                                <div class="irs-teachers-name">
+                                    <h4><a href="#"><?= $res->name ?></a></h4>
+                                    <p><?= $res->secteur ?></p>
+                                </div>
                             </div>
-                            <div class="irs-teachers-social">
-                                <a href="#"><i class="zmdi zmdi-facebook"></i></a>
-                                <a href="#"><i class="zmdi zmdi-vimeo"></i></a>
-                                <a href="#"><i class="zmdi zmdi-pinterest"></i></a>
-                                <a href="#"><i class="zmdi zmdi-twitter"></i></a>
-                            </div> -->
                         </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6">
-                        <div class="irs-teachers-col animated fadeInUpShort slow delay-500">
-                            <a href="#"><img src="assets/images/Alumni/2.jpg" alt="" /> </a>
-                            <!-- <div class="irs-teachers-name">
-                                <h4><a href="inscrit-1">Ross Taylor</a></h4>
-                                <p>english teacher</p>
-                            </div>
-                            <div class="irs-teachers-social">
-                                <a href="#"><i class="zmdi zmdi-facebook"></i></a>
-                                <a href="#"><i class="zmdi zmdi-vimeo"></i></a>
-                                <a href="#"><i class="zmdi zmdi-pinterest"></i></a>
-                                <a href="#"><i class="zmdi zmdi-twitter"></i></a>
-                            </div> -->
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6">
-                        <div class="irs-teachers-col animated fadeInUpShort slow delay-750">
-                            <a href="#"><img src="assets/images/Alumni/3.jpg" alt="" /> </a>
-                            <!-- <div class="irs-teachers-name">
-                                <h4><a href="inscrit-1">Jessi Taylor</a></h4>
-                                <p>chemistry teacher</p>
-                            </div>
-                            <div class="irs-teachers-social">
-                                <a href="#"><i class="zmdi zmdi-facebook"></i></a>
-                                <a href="#"><i class="zmdi zmdi-vimeo"></i></a>
-                                <a href="#"><i class="zmdi zmdi-pinterest"></i></a>
-                                <a href="#"><i class="zmdi zmdi-twitter"></i></a>
-                            </div> -->
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6">
-                        <div class="irs-teachers-col animated fadeInUpShort slow delay-1000">
-                            <a href="#"><img src="assets/images/Alumni/4.jpg" alt="" /> </a>
-                            <!-- <div class="irs-teachers-name">
-                                <h4><a href="inscrit-1">Julio Jesus</a></h4>
-                                <p>history teacher</p>
-                            </div>
-                            <div class="irs-teachers-social">
-                                <a href="#"><i class="zmdi zmdi-facebook"></i></a>
-                                <a href="#"><i class="zmdi zmdi-vimeo"></i></a>
-                                <a href="#"><i class="zmdi zmdi-pinterest"></i></a>
-                                <a href="#"><i class="zmdi zmdi-twitter"></i></a>
-                            </div> -->
-                        </div>
-                    </div>
+                    <?php }$req->closeCursor(); ?>
                 </div>
             </div>
         </section>
         <!-- Teachers  end -->
 
-        <!-- Testimonial start -->
+        <!-- Nous -->
         <section class="irs-testimonial-field irs-layer-black">
             <img src="ssets/images/students.png" alt="" />
             <div class="container">
@@ -586,7 +467,6 @@
                                     <p>
                                         Etre la plateforme de référence et d’excellence fédérant tous les anciens diplômés de l’UNIKIN en RDC et dans le monde, ainsi qu’un pilier des initiatives de développement de la colline inspirée
                                     </p>
-                                    <!-- <h4>Julio Jesus</h4> -->
                                     <h4>Notre Vision</h4>
                                 </div>
                             </div>
@@ -600,23 +480,8 @@
                                         Constituer le plus grand réseau des élites de la RDC sortant de l’UNIKIN au rayonnement international
                                     </p>
                                     <h4>Notre Mission</h4>
-                                    <!-- <h5>Principal, ABC UNIVERSITY</h5> -->
                                 </div>
                             </div>
-                            <!-- <div class="item">
-                                <div class="irs-transparent-space"></div>
-                                <div class="irs-testimonial-single">
-                                    <div class="irs-comment-icon">
-                                        <i class="icofont icofont-quote-right"></i>
-                                    </div>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtin didunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                                        ex.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtin didunt ut labore.
-                                    </p>
-                                    <h4>Fadrid Jons</h4>
-                                    <h5>Principal, ABC UNIVERSITY</h5>
-                                </div>
-                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -624,13 +489,13 @@
         </section>
         <!-- Testimonial end -->
 
-        <!-- Blog start -->
+        <!-- Blog  -->
         <section class="irs-blog-field">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3">
                         <div class="irs-section-title">
-                            <h2>Nos <span>projets & <br> programmes</span></h2>
+                            <h2>Nos <span>actualités</span></h2>
                             <div class="irs-title-line">
                                 <div class="irs-title-icon">
                                     <i class="icofont icofont-education"></i>
@@ -644,92 +509,40 @@
                 </div>
                 <div class="row animatedParent animateOnce">
 
-                    <p style="text-align: center;">
-                        <i><em>Aucun programme ou projets pour le moment</em></i>
-                    </p>
+                    <?php  
+                        require 'models/articles-index.php';
+                        while ($res = $req->fetch(PDO::FETCH_OBJ)) {
+                    ?>
 
-                    <!-- <div class="col-md-4 col-sm-6">
-                        <div class="irs-courses-col irs-blog-col animated fadeInLeftShort slow delay-250">
-                            <div class="irs-courses-img">
-                                <img src="assets/images/blog/1.jpg" alt="" />
-                            </div>
-                            <div class="irs-info-text">
-                                <ul class="clearfix">
-                                    <li>
-                                        <p><i class="icofont icofont-clock-time"></i> <a href="#">14 Sep 2017</a></p>
-                                    </li>
-                                    <li>
-                                        <p><i class="icofont icofont-open-eye"></i> <a href="#">65</a></p>
-                                    </li>
-                                    <li>
-                                        <p><i class="icofont icofont-comment"></i> <a href="#">40</a></p>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="irs-courses-content">
-                                <h4><a href="blog-single.html">Notre système d'éducation</a></h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtin didunt ut labore et dolore magna aliqua.</p>
-                                <a class="btn btn-default irs-btn-transparent-two" href="blog-single.html" role="button">Lire article</a>
+                        <div class="col-md-4 col-sm-6">
+                            <div class="irs-courses-col irs-blog-col animated fadeInLeftShort slow delay-250">
+                                <div class="irs-courses-img">
+                                    <img src="admins/assets/astuce/<?= $res->avatar ?>" alt="" />
+                                </div>
+                                <div class="irs-info-text">
+                                    <ul class="clearfix">
+                                        <li>
+                                            <p><i class="icofont icofont-clock-time"></i> <a href="article-<?= $res->id ?>"><?= $res->datepub ?></a></p>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="irs-courses-content">
+                                    <h4><a href="article-<?= $res->id ?>"><?= $res->titre ?></a></h4>
+                                    <?= substr($res->contenue, 0, 115).'...' ?> <br>
+                                    <a class="btn btn-default irs-btn-transparent-two" href="article-<?= $res->id ?>" role="button">Lire article</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <div class="irs-courses-col irs-blog-col animated fadeInUpShort slow delay-500">
-                            <div class="irs-courses-img">
-                                <img src="assets/images/blog/2.jpg" alt="" />
-                            </div>
-                            <div class="irs-info-text">
-                                <ul class="clearfix">
-                                    <li>
-                                        <p><i class="icofont icofont-clock-time"></i> <a href="#">14 Sep 2017</a></p>
-                                    </li>
-                                    <li>
-                                        <p><i class="icofont icofont-open-eye"></i> <a href="#">65</a></p>
-                                    </li>
-                                    <li>
-                                        <p><i class="icofont icofont-comment"></i> <a href="#">40</a></p>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="irs-courses-content">
-                                <h4><a href="blog-single.html">Notre système d'éducation</a></h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtin didunt ut labore et dolore magna aliqua.</p>
-                                <a class="btn btn-default irs-btn-transparent-two" href="blog-single.html" role="button">Lire article</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <div class="irs-courses-col irs-blog-col animated fadeInRightShort slow delay-250">
-                            <div class="irs-courses-img">
-                                <img src="assets/images/blog/3.jpg" alt="" />
-                            </div>
-                            <div class="irs-info-text">
-                                <ul class="clearfix">
-                                    <li>
-                                        <p><i class="icofont icofont-clock-time"></i> <a href="#">14 Sep 2017</a></p>
-                                    </li>
-                                    <li>
-                                        <p><i class="icofont icofont-open-eye"></i> <a href="#">65</a></p>
-                                    </li>
-                                    <li>
-                                        <p><i class="icofont icofont-comment"></i> <a href="#">40</a></p>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="irs-courses-content">
-                                <h4><a href="blog-single.html">Notre système d'éducation</a></h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtin didunt ut labore et dolore magna aliqua.</p>
-                                <a class="btn btn-default irs-btn-transparent-two" href="blog-single.html" role="button">Lire article</a>
-                            </div>
-                        </div>
-                    </div> -->
+
+                    <?php }$req->closeCursor(); ?>
+
                 </div>
             </div>
         </section>
         <!-- Blog end -->
 
-        <!-- Newsletter start -->
-        <section class="irs-newsletter-field">
+        <!-- Newsletter  -->
+        <section class="irs-newsletter-field" id="feedfollow">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 col-sm-6">
@@ -743,9 +556,22 @@
                             <p>
                                 Abonnez-vous à notre newsletter pour recevoir régulièrement des actualités exclusives, des conseils utiles et des opportunités passionnantes directement dans votre boîte de réception. Restez informé et connecté avec notre communauté!
                             </p>
-                            <form method="POST" action="">
+
+                            <?php if (isset($_SESSION['error']) && !empty($_SESSION['error'])): ?>
+                                <div id="feed" class="alert alert-danger" role="alert">
+                                    <?php echo $_SESSION['error'];unset($_SESSION['error']); ?>
+                                </div>
+                            <?php endif ?>
+
+                            <?php if (isset($_SESSION['success']) && !empty($_SESSION['success'])): ?>
+                                <div id="feed" class="alert alert-success" role="alert">
+                                    <?php echo $_SESSION['success'];unset($_SESSION['success']); ?>
+                                </div>
+                            <?php endif ?>
+
+                            <form method="POST" action="models/follow.php">
                                 <div class="input-group">
-                                    <input placeholder="Votre adresse e-mail" class="form-control" name="search-field" type="text" required />
+                                    <input placeholder="Votre adresse e-mail" class="form-control" name="email" type="email" required />
                                     <span class="input-group-btn">
                                         <button type="submit" class="btn">S'abonner</button>
                                     </span>
@@ -760,7 +586,7 @@
 
         <?php require 'views/footer.php'; ?>
 
-        <!-- script start from here -->
+        <!-- script  from here -->
         <script type="text/javascript" src="assets/js/jquery.js"></script>
         <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="assets/js/bootstrap-dropdownhover.min.js"></script>
@@ -779,10 +605,10 @@
         <!-- Custom script for all pages -->
         <script type="text/javascript" src="assets/js/script.js"></script>
 
-        <!-- Funfact START -->
+        <!-- Funfact  -->
         <script type="text/javascript">
             $(document).ready(function ($) {
-                $(".start-count").each(function () {
+                $(".-count").each(function () {
                     var $this = $(this);
                     $this.data("target", parseInt($this.html()));
                     $this.data("counted", false);
@@ -792,7 +618,7 @@
                 $(window)
                     .bind("scroll", function () {
                         var speed = 3000;
-                        $(".start-count").each(function () {
+                        $(".-count").each(function () {
                             var $this = $(this);
                             if (!$this.data("counted") && $(window).scrollTop() + $(window).height() >= $this.offset().top) {
                                 $this.data("counted", true);

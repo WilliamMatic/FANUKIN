@@ -129,38 +129,44 @@
                                         <table id="example" class="table table-bordered dt-responsive nowrap table-striped align-middle" style="width: 100%;">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col" style="width: 10px;">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input fs-15" type="checkbox" id="checkAll" value="option" />
-                                                        </div>
-                                                    </th>
-                                                    <th data-ordering="false">Sujet</th>
-                                                    <th data-ordering="false">Nom</th>
-                                                    <th data-ordering="false">Email</th>
-                                                    <th data-ordering="false">Telephone</th>
+                                                    <th data-ordering="false">Destinateur</th>
                                                     <th data-ordering="false">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <th scope="row">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input fs-15" type="checkbox" name="checkAll" value="option1" />
-                                                        </div>
-                                                    </th>
-                                                    <td>CDD</td>
-                                                    <td>CDD</td>
-                                                    <td>CDD</td>
-                                                    <td>CDD</td>
-                                                    <td>
-                                                        <a href="#" class="me-2">
-                                                            <i class="fa-solid fa-trash-can text-danger"></i>
-                                                        </a>
-                                                        <a href="message-1">
-                                                            Voir le message
-                                                        </a>
-                                                    </td>
-                                                </tr>
+                                                <?php  
+                                                    require 'models/messages.php';
+                                                    while ($res = $req->fetch(PDO::FETCH_OBJ)) {
+                                                ?>
+                                                    <?php if ($res->status == 0): ?>
+                                                        <tr class="table-success">
+                                                            <td><?= $res->nom ?></td>
+                                                            <td>
+                                                                <a href="delete-message.php?id=<?= $res->id ?>" class="me-2">
+                                                                    <i class="fa-solid fa-trash-can text-danger"></i>
+                                                                </a>
+                                                                <a href="message-<?= $res->id ?>">
+                                                                    Voir le message
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    <?php endif ?>
+
+
+                                                    <?php if ($res->status == 1): ?>
+                                                        <tr>
+                                                            <td>CDD</td>
+                                                            <td>
+                                                                <a href="delete-message.php?id=<?= $res->id ?>" class="me-2">
+                                                                    <i class="fa-solid fa-trash-can text-danger"></i>
+                                                                </a>
+                                                                <a href="message-1">
+                                                                    Voir le message
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    <?php endif ?>
+                                                <?php }$req->closeCursor(); ?>
                                             </tbody>
                                         </table>
                                     </div>

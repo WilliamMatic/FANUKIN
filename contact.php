@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -16,9 +17,6 @@
         <link rel="stylesheet" href="assets/css/style.css" />
         <!-- Responsive stylesheet -->
         <link rel="stylesheet" href="assets/css/responsive.css" />
-
-        
-
         
         <!-- Fontawesome -->
         <link
@@ -173,9 +171,22 @@
                 </div> -->
                 <div class="row">
                     <div class="col-md-8 col-sm-6">
+
+                        <?php if (isset($_SESSION['error']) && !empty($_SESSION['error'])): ?>
+                            <div id="feed" class="alert alert-danger" role="alert">
+                                <?php echo $_SESSION['error'];unset($_SESSION['error']); ?>
+                            </div>
+                        <?php endif ?>
+
+                        <?php if (isset($_SESSION['success']) && !empty($_SESSION['success'])): ?>
+                            <div id="feed" class="alert alert-success" role="alert">
+                                <?php echo $_SESSION['success'];unset($_SESSION['success']); ?>
+                            </div>
+                        <?php endif ?>
+
                         <div class="irs-contact-col">
                             <div class="row">
-                                <form id="productForm" action="" method="post">
+                                <form action="models/add-message.php" method="post">
                                     <div class="col-md-6">
                                         <input id="form_name" name="form_name" class="form-control" placeholder="Nom complet*" required="required" data-error="Name is required." type="text" />
                                     </div>
@@ -193,45 +204,45 @@
 
                                 <script type="text/javascript">
                                     
-                                    document.getElementById('productForm').addEventListener('submit', function(event) {
-                                        event.preventDefault();
+                                    // document.getElementById('productForm').addEventListener('submit', function(event) {
+                                    //     event.preventDefault();
 
-                                        let formData = new FormData(this);
+                                    //     let formData = new FormData(this);
 
-                                        fetch('models/add-message.php', {
-                                            method: 'POST',
-                                            body: formData
-                                        })
-                                        .then(response => {
-                                            if (!response.ok) {
-                                                throw new Error('Une erreur est survenue lors de l\'envoi des données.');
-                                            }
-                                            Swal.fire({
-                                              icon: "success",
-                                              title: "success...",
-                                            });
-                                             document.getElementById('productForm').reset()
-                                        })
-                                        .then(data => {
-                                            console.log(data);
-                                            // Afficher un message de succès ou effectuer d'autres actions si nécessaire
-                                            Swal.fire({
-                                              icon: "error",
-                                              title: "success...",
-                                              text: ""+data,
-                                            });
-                                        })
-                                        .catch(error => {
-                                            console.error('Erreur:', error);
-                                            // Afficher un message d'erreur ou effectuer d'autres actions si nécessaire
-                                            // Afficher un message de succès ou effectuer d'autres actions si nécessaire
-                                            Swal.fire({
-                                              icon: "error",
-                                              title: "success...",
-                                              text: ""+error,
-                                            });
-                                        });
-                                    });
+                                    //     fetch('models/add-message.php', {
+                                    //         method: 'POST',
+                                    //         body: formData
+                                    //     })
+                                    //     .then(response => {
+                                    //         if (!response.ok) {
+                                    //             throw new Error('Une erreur est survenue lors de l\'envoi des données.');
+                                    //         }
+                                    //         Swal.fire({
+                                    //           icon: "success",
+                                    //           title: "success...",
+                                    //         });
+                                    //          document.getElementById('productForm').reset()
+                                    //     })
+                                    //     .then(data => {
+                                    //         console.log(data);
+                                    //         // Afficher un message de succès ou effectuer d'autres actions si nécessaire
+                                    //         Swal.fire({
+                                    //           icon: "error",
+                                    //           title: "success...",
+                                    //           text: ""+data,
+                                    //         });
+                                    //     })
+                                    //     .catch(error => {
+                                    //         console.error('Erreur:', error);
+                                    //         // Afficher un message d'erreur ou effectuer d'autres actions si nécessaire
+                                    //         // Afficher un message de succès ou effectuer d'autres actions si nécessaire
+                                    //         Swal.fire({
+                                    //           icon: "error",
+                                    //           title: "success...",
+                                    //           text: ""+error,
+                                    //         });
+                                    //     });
+                                    // });
 
                                 </script>
                             </div>
